@@ -1,4 +1,4 @@
-multiga.js
+multiga
 ==========
 
 Multiple Google Analytics tracking
