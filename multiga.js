@@ -15,7 +15,8 @@ Multiga = (function() {
       'https://ssl': 'http://www'
     }) + '.google-analytics.com/ga.js';
     s = (document.getElementsByTagName('script'))[0];
-    return s.parentNode.insertBefore(ga, s);
+    s.parentNode.insertBefore(ga, s);
+    return this;
   };
 
   Multiga.prototype.register = function(profile) {
@@ -23,121 +24,112 @@ Multiga = (function() {
       code: 'tracker' + this.accounts.length,
       profile: profile
     });
-    return _gaq.push(['tracker' + this.accounts.length + '._setAccount', profile]);
+    _gaq.push(['tracker' + this.accounts.length + '._setAccount', profile]);
+    return true;
   };
 
   Multiga.prototype.trackPageView = function(path) {
-    var account, _i, _len, _ref, _results;
+    var account, _i, _len, _ref;
     _ref = this.accounts;
-    _results = [];
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       account = _ref[_i];
-      _results.push(_gaq.push([account.code + '._trackPageview', path]));
+      _gaq.push([account.code + '._trackPageview', path]);
     }
-    return _results;
+    return this;
   };
 
   Multiga.prototype.trackEvent = function(category, action, opt_label, opt_value, opt_noninteraction) {
-    var account, _i, _len, _ref, _results;
+    var account, _i, _len, _ref;
     _ref = this.accounts;
-    _results = [];
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       account = _ref[_i];
-      _results.push(_gaq.push([account.code + '._trackEvent', category, action, opt_label, opt_value, opt_noninteraction]));
+      _gaq.push([account.code + '._trackEvent', category, action, opt_label, opt_value, opt_noninteraction]);
     }
-    return _results;
+    return this;
   };
 
   Multiga.prototype.setDomainName = function(domainName) {
-    var account, _i, _len, _ref, _results;
+    var account, _i, _len, _ref;
     _ref = this.accounts;
-    _results = [];
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       account = _ref[_i];
-      _results.push(_gaq.push([account.code + '._setDomainName', domainName]));
+      _gaq.push([account.code + '._setDomainName', domainName]);
     }
-    return _results;
+    return this;
   };
 
   Multiga.prototype.setAllowLinker = function(allowLinker) {
-    var account, _i, _len, _ref, _results;
+    var account, _i, _len, _ref;
     _ref = this.accounts;
-    _results = [];
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       account = _ref[_i];
-      _results.push(_gaq.push([account.code + '._setAllowLinker', allowLinker]));
+      _gaq.push([account.code + '._setAllowLinker', allowLinker]);
     }
-    return _results;
+    return this;
   };
 
   Multiga.prototype.link = function(targetUrl, useHash) {
-    var account, _i, _len, _ref, _results;
+    var account, _i, _len, _ref;
     _ref = this.accounts;
-    _results = [];
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       account = _ref[_i];
-      _results.push(_gaq.push([account.code + '._link', targetUrl, useHash]));
+      _gaq.push([account.code + '._link', targetUrl, useHash]);
     }
-    return _results;
+    return this;
   };
 
   Multiga.prototype.linkByPost = function(formObject, useHash) {
-    var account, _i, _len, _ref, _results;
+    var account, _i, _len, _ref;
     _ref = this.accounts;
-    _results = [];
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       account = _ref[_i];
-      _results.push(_gaq.push([account.code + '._linkByPost', formObject, useHash]));
+      _gaq.push([account.code + '._linkByPost', formObject, useHash]);
     }
-    return _results;
+    return this;
   };
 
   Multiga.prototype.setCustomVar = function(index, name, value, opt_scope) {
-    var account, _i, _len, _ref, _results;
+    var account, _i, _len, _ref;
     _ref = this.accounts;
-    _results = [];
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       account = _ref[_i];
-      _results.push(_gaq.push([account.code + '._setCustomVar', index, name, value, opt_scope]));
+      _gaq.push([account.code + '._setCustomVar', index, name, value, opt_scope]);
     }
-    return _results;
+    return this;
   };
 
   Multiga.prototype.trackPageLoadTime = function() {
-    var account, _i, _len, _ref, _results;
+    var account, _i, _len, _ref;
     _ref = this.accounts;
-    _results = [];
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       account = _ref[_i];
-      _results.push(_gaq.push([account.code + '._trackPageLoadTime']));
+      _gaq.push([account.code + '._trackPageLoadTime']);
     }
-    return _results;
+    return this;
   };
 
   Multiga.prototype.trackPageView = function(path) {
-    var account, _i, _len, _ref, _results;
+    var account, _i, _len, _ref;
     _ref = this.accounts;
-    _results = [];
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       account = _ref[_i];
-      _results.push(_gaq.push([account.code + '._trackPageview', path]));
+      _gaq.push([account.code + '._trackPageview', path]);
     }
-    return _results;
+    return this;
   };
 
   Multiga.prototype.push = function(array) {
-    var account, command, _i, _len, _ref, _results;
+    var account, command, _i, _len, _ref;
     if (array instanceof Array && array.length > 0) {
       command = array[0];
       _ref = this.accounts;
-      _results = [];
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         account = _ref[_i];
         array[0] = account.code + '.' + command;
-        _results.push(_gaq.push(array));
+        _gaq.push(array);
       }
-      return _results;
     }
+    return this;
   };
 
   return Multiga;
