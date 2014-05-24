@@ -1,25 +1,25 @@
-var Multiga;
+var mga;
 
-Multiga = (function() {
-  function Multiga() {
+mga = (function() {
+  function mga() {
     this.accounts = [];
     this._initga();
   }
 
-  Multiga.prototype._initga = function() {
-    var ga, s, _ref;
-    ga = document.createElement('script');
-    ga.type = 'text/javascript';
-    ga.async = true;
-    ga.src = ((_ref = 'https:' === document.location.protocol) != null ? _ref : {
+  mga.prototype._initga = function() {
+    var gascript, s, _ref;
+    gascript = document.createElement('script');
+    gascript.type = 'text/javascript';
+    gascript.async = true;
+    gascript.src = ((_ref = 'https:' === document.location.protocol) != null ? _ref : {
       'https://ssl': 'http://www'
     }) + '.google-analytics.com/ga.js';
     s = (document.getElementsByTagName('script'))[0];
-    s.parentNode.insertBefore(ga, s);
+    s.parentNode.insertBefore(gascript, s);
     return this;
   };
 
-  Multiga.prototype.register = function(profile) {
+  mga.prototype.register = function(profile) {
     this.accounts.push({
       code: 'tracker' + this.accounts.length,
       profile: profile
@@ -28,7 +28,7 @@ Multiga = (function() {
     return true;
   };
 
-  Multiga.prototype.trackPageView = function(path) {
+  mga.prototype.trackPageView = function(path) {
     var account, _i, _len, _ref;
     _ref = this.accounts;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
@@ -38,7 +38,7 @@ Multiga = (function() {
     return this;
   };
 
-  Multiga.prototype.trackEvent = function(category, action, opt_label, opt_value, opt_noninteraction) {
+  mga.prototype.trackEvent = function(category, action, opt_label, opt_value, opt_noninteraction) {
     var account, _i, _len, _ref;
     _ref = this.accounts;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
@@ -48,7 +48,7 @@ Multiga = (function() {
     return this;
   };
 
-  Multiga.prototype.setDomainName = function(domainName) {
+  mga.prototype.setDomainName = function(domainName) {
     var account, _i, _len, _ref;
     _ref = this.accounts;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
@@ -58,7 +58,7 @@ Multiga = (function() {
     return this;
   };
 
-  Multiga.prototype.setAllowLinker = function(allowLinker) {
+  mga.prototype.setAllowLinker = function(allowLinker) {
     var account, _i, _len, _ref;
     _ref = this.accounts;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
@@ -68,7 +68,7 @@ Multiga = (function() {
     return this;
   };
 
-  Multiga.prototype.link = function(targetUrl, useHash) {
+  mga.prototype.link = function(targetUrl, useHash) {
     var account, _i, _len, _ref;
     _ref = this.accounts;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
@@ -78,7 +78,7 @@ Multiga = (function() {
     return this;
   };
 
-  Multiga.prototype.linkByPost = function(formObject, useHash) {
+  mga.prototype.linkByPost = function(formObject, useHash) {
     var account, _i, _len, _ref;
     _ref = this.accounts;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
@@ -88,7 +88,7 @@ Multiga = (function() {
     return this;
   };
 
-  Multiga.prototype.setCustomVar = function(index, name, value, opt_scope) {
+  mga.prototype.setCustomVar = function(index, name, value, opt_scope) {
     var account, _i, _len, _ref;
     _ref = this.accounts;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
@@ -98,7 +98,7 @@ Multiga = (function() {
     return this;
   };
 
-  Multiga.prototype.trackPageLoadTime = function() {
+  mga.prototype.trackPageLoadTime = function() {
     var account, _i, _len, _ref;
     _ref = this.accounts;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
@@ -108,7 +108,7 @@ Multiga = (function() {
     return this;
   };
 
-  Multiga.prototype.trackPageView = function(path) {
+  mga.prototype.trackPageView = function(path) {
     var account, _i, _len, _ref;
     _ref = this.accounts;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
@@ -118,7 +118,7 @@ Multiga = (function() {
     return this;
   };
 
-  Multiga.prototype.push = function(array) {
+  mga.prototype.push = function(array) {
     var account, command, _i, _len, _ref;
     if (array instanceof Array && array.length > 0) {
       command = array[0];
@@ -132,6 +132,6 @@ Multiga = (function() {
     return this;
   };
 
-  return Multiga;
+  return mga;
 
 })();
